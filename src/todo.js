@@ -12,11 +12,14 @@ export function createToDo(
   const toDoDueDate = dueDate;
   const toDoPriority = priority;
   const toDoCheck = isDone;
-  const toDo = [toDoTitle, toDoDesc, toDoDueDate, toDoPriority, toDoCheck];
+  const toDo = { toDoTitle, toDoDesc, toDoDueDate, toDoPriority, toDoCheck };
 
-  addToDo(toDo);
+  const getToDo = () => toDo;
+
+  return { getToDo };
 }
 
-function addToDo(todo) {
-  toDoContainer.push(todo);
+function addToDo() {
+  const toDo = createToDo("cos", "cos", "cos", "cos");
+  toDoContainer.push(toDo.getToDo());
 }

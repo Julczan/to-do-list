@@ -6,6 +6,24 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="content"></div>
+    <div id="content">
+      <form action="" method="post" id="toDoForm" hidden>
+        <label for="title">What would you like to do:</label>
+        <input name="user_title" type="text" id="title" required />
+
+        <label for="desc">Add some more information:</label>
+        <textarea name="user_desc" id="desc"></textarea>
+
+        <label for="dueDate">When is it due:</label>
+        <input type="date" id="dueDate" />
+
+        <label for="priority">How important is the task:</label>
+        <select name="priority" id="priority">
+          <option value="high">Very Important</option>
+          <option value="medium">Medium</option>
+          <option value="low">Not Important</option>
+        </select>
+      </form>
+    </div>
   </body>
 </html>
