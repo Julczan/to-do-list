@@ -1,9 +1,15 @@
-export const toDoContainer = [];
+const toDoContainer = [];
+const defaultProjectContainer = [toDoContainer];
 
-function createProject(title = "first") {
-  const projectContainer = [];
+function createProject(title) {
   const projectTitle = title;
+  const projectContainer = [{ title }, []];
+  console.log(projectContainer);
+
+  return { projectContainer };
 }
+
+function activeProject() {}
 
 function createToDo(title, description, dueDate, priority, isDone = false) {
   const toDoTitle = title;
@@ -19,18 +25,18 @@ function createToDo(title, description, dueDate, priority, isDone = false) {
 }
 
 function addToDo() {
-  const info = getToDoInfo();
+  const info = toDoInfo();
   const toDo = createToDo(
-    info.sendInfo()[0],
-    info.sendInfo()[1],
-    info.sendInfo()[2],
-    info.sendInfo()[3]
+    info.getToDoInfo()[0],
+    info.getToDoInfo()[1],
+    info.getToDoInfo()[2],
+    info.getToDoInfo()[3]
   );
   toDoContainer.push(toDo.getToDo());
-  console.log(toDoContainer);
+  console.log(defaultProjectContainer);
 }
 
-export function getToDoInfo() {
+function toDoInfo() {
   const formTitle = document.querySelector("#title");
   const formDesc = document.querySelector("#desc");
   const formDate = document.querySelector("#dueDate");
@@ -43,10 +49,12 @@ export function getToDoInfo() {
     formPriority.value,
   ];
 
-  const sendInfo = () => toDoInfo;
+  const getToDoInfo = () => toDoInfo;
 
-  return { sendInfo };
+  return { getToDoInfo };
 }
+
+createProject("jeden");
 
 const addButton = document.querySelector("#add");
 
