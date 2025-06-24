@@ -5,17 +5,23 @@ function createProject(title) {
   const projectTitle = title;
   const projectContainer = [projectTitle, []];
 
+  const active = setActiveProject(title);
+  console.log(active);
+
   return { projectContainer };
 }
 
-const first = createProject("first").projectContainer;
+const first = createProject("second").projectContainer;
 
-function activeProject() {}
+function setActiveProject(project) {
+  let activeProject = project;
+
+  return { activeProject };
+}
 
 function addToProject() {
   const container = addToDo();
   first[1] = container.getToDoContainer();
-  console.log(first);
 }
 
 function createToDo(title, description, dueDate, priority, isDone = false) {
