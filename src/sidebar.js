@@ -7,12 +7,12 @@ export function createSidebar() {
   profile.classList.add("sidebar-element");
   profile.textContent = "Julczan";
 
-  const projects = createDiv(projectList);
+  const projectDivs = createDiv(projectList);
 
   container.appendChild(profile);
-  container.appendChild(projects);
+  container.appendChild(projectDivs);
 
-  return { container };
+  return { container, projectDivs };
 }
 
 console.log(projectList);
