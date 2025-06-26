@@ -1,28 +1,20 @@
-const toDoContainer = [];
-const defaultProjectContainer = ["Home", toDoContainer];
+let active = [];
+const defaultContainer = createProject("Home").projectContainer;
 
 function createProject(title) {
   const projectTitle = title;
-  const projectContainer = [projectTitle, []];
+  const projectContainer = [projectTitle];
 
-  const active = setActiveProject(title);
-  console.log(active);
+  setActiveProject(projectContainer);
 
   return { projectContainer };
 }
 
-const first = createProject("second").projectContainer;
-
-function setActiveProject(project) {
-  let activeProject = project;
-
-  return { activeProject };
+function setActiveProject(container) {
+  active = container;
 }
 
-function addToProject() {
-  const container = addToDo();
-  first[1] = container.getToDoContainer();
-}
+function getActiveProject() {}
 
 function createToDo(title, description, dueDate, priority, isDone = false) {
   const toDoTitle = title;
@@ -45,11 +37,9 @@ function addToDo() {
     info.getToDoInfo()[2],
     info.getToDoInfo()[3]
   );
-  toDoContainer.push(toDo.getToDo());
 
-  const getToDoContainer = () => toDoContainer;
-
-  return { getToDoContainer };
+  active.push(toDo.getToDo());
+  console.log(defaultContainer);
 }
 
 function toDoInfo() {
@@ -69,7 +59,6 @@ function toDoInfo() {
 
   return { getToDoInfo };
 }
-
 const addButton = document.querySelector("#add");
 
-addButton.addEventListener("click", () => addToProject());
+addButton.addEventListener("click", () => addToDo());

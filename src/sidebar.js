@@ -1,6 +1,5 @@
 function createSidebar() {
-  const container = document.createElement("div");
-  container.classList.add("sidebar");
+  const container = document.querySelector(".sidebar");
 
   const profile = document.createElement("div");
   profile.classList.add("sidebar-element");
