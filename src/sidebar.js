@@ -1,3 +1,5 @@
+import { projectList } from "./todo.js";
+
 function createSidebar() {
   const container = document.querySelector(".sidebar");
 
@@ -7,11 +9,18 @@ function createSidebar() {
 
   const projects = document.createElement("div");
   projects.classList.add("sidebar-element");
-  projects.textContent = "My Projects";
+
+  projects.innerHTML = createListElements(projectList).list;
 
   container.appendChild(profile);
   container.appendChild(projects);
   return container;
+}
+
+function createListElements() {
+  let list = projectList.join(`<br>`);
+
+  return { list };
 }
 
 export default createSidebar();

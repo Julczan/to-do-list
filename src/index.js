@@ -1,5 +1,6 @@
 import "./styles.css";
 import sidebar from "./sidebar.js";
-import { toDoContainer } from "./todo.js";
+import { activeProject } from "./todo.js";
+import { addButton } from "./DOM-manipulation.js";
 
-console.log(toDoContainer);
+console.log(activeProject);

@@ -1,5 +1,9 @@
-let active = [];
-const defaultContainer = createProject("Home").projectContainer;
+let activeProject = [];
+let projectList = [];
+
+createProject("Home").projectContainer;
+createProject("second").projectContainer;
+createProject("third").projectContainer;
 
 function createProject(title) {
   const projectTitle = title;
@@ -7,14 +11,14 @@ function createProject(title) {
 
   setActiveProject(projectContainer);
 
+  projectList.push(projectTitle);
+
   return { projectContainer };
 }
 
-function setActiveProject(container) {
-  active = container;
+export function setActiveProject(container) {
+  activeProject = container;
 }
-
-function getActiveProject() {}
 
 function createToDo(title, description, dueDate, priority, isDone = false) {
   const toDoTitle = title;
@@ -29,7 +33,7 @@ function createToDo(title, description, dueDate, priority, isDone = false) {
   return { getToDo };
 }
 
-function addToDo() {
+export function addToDo() {
   const info = toDoInfo();
   const toDo = createToDo(
     info.getToDoInfo()[0],
@@ -37,9 +41,8 @@ function addToDo() {
     info.getToDoInfo()[2],
     info.getToDoInfo()[3]
   );
-
-  active.push(toDo.getToDo());
-  console.log(defaultContainer);
+  activeProject.push(toDo.getToDo());
+  console.log(activeProject);
 }
 
 function toDoInfo() {
@@ -59,6 +62,5 @@ function toDoInfo() {
 
   return { getToDoInfo };
 }
-const addButton = document.querySelector("#add");
 
-addButton.addEventListener("click", () => addToDo());
+export { activeProject, projectList };
