@@ -17,7 +17,6 @@ function createProject(title) {
 
   return { projectTitle };
 }
-console.log(projectList);
 
 export function setActiveProject(title) {
   projectList.activeProject = title;

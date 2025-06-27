@@ -7,24 +7,24 @@ export function createSidebar() {
   profile.classList.add("sidebar-element");
   profile.textContent = "Julczan";
 
-  const projectDivs = createDiv(projectList);
+  const projects = createProjectDivs(projectList.projects).projectDiv;
 
   container.appendChild(profile);
-  container.appendChild(projectDivs);
+  container.appendChild(projects);
 
-  return { container, projectDivs };
+  return { container, projects };
 }
 
-function createDiv(project) {
-  const projects = document.createElement("div");
-  projects.classList.add("sidebar-element");
+function createProjectDivs(projects) {
+  let projectDiv = document.createElement("div");
+  projectDiv.classList.add("sidebar-container");
 
-  for (let i = 0; i < project.length; i++) {
-    const div = document.createElement("div");
+  projects.forEach((project) => {
+    let div = document.createElement("div");
     div.classList.add("sidebar-element");
-    div.textContent = project[i];
-    projects.appendChild(div);
-  }
+    div.textContent = project;
+    projectDiv.appendChild(div);
+  });
 
-  return projects;
+  return { projectDiv };
 }
