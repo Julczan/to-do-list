@@ -15,11 +15,10 @@ export function createSidebar() {
   return { container, projectDivs };
 }
 
-console.log(projectList);
-
 function createDiv(project) {
   const projects = document.createElement("div");
   projects.classList.add("sidebar-element");
+
   for (let i = 0; i < project.length; i++) {
     const div = document.createElement("div");
     div.classList.add("sidebar-element");

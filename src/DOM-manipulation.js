@@ -1,12 +1,11 @@
-import { activeProject, addToDo, setActiveProject } from "./todo.js";
+import { addToDo } from "./todo.js";
 import { createSidebar } from "./sidebar.js";
 
-const sidebarProject = createSidebar().projectDivs;
-console.log(sidebarProject);
+// const sidebarProject = createSidebar().projectDivs;
 
-sidebarProject.addEventListener("click", (e) =>
-  setActiveProject([e.target.textContent])
-);
+// sidebarProject.addEventListener("click", (e) =>
+//   setActiveProject([e.target.textContent])
+// );
 
 const addButton = document.querySelector("#add");
 

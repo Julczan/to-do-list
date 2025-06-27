@@ -1,23 +1,32 @@
-let activeProject = [];
-let projectList = [];
+let projectList = {
+  projects: [],
+  activeProject: "",
+  toDoContainer: {},
+};
 
-createProject("Home").projectContainer;
-createProject("second").projectContainer;
-createProject("third").projectContainer;
+createProject("Home");
+createProject("Car");
+createProject("Gym");
 
 function createProject(title) {
   const projectTitle = title;
-  const projectContainer = [projectTitle];
 
-  setActiveProject(projectContainer);
+  setActiveProject(projectTitle);
+  projectList.projects.push(projectTitle);
+  projectList.toDoContainer[projectTitle] = [];
 
-  projectList.push(projectTitle);
+  return { projectTitle };
+}
+console.log(projectList);
 
-  return { projectContainer };
+export function setActiveProject(title) {
+  projectList.activeProject = title;
 }
 
-export function setActiveProject(container) {
-  activeProject = container;
+function getActiveProject() {
+  let active = projectList.toDoContainer[projectList.activeProject];
+
+  return active;
 }
 
 function createToDo(title, description, dueDate, priority, isDone = false) {
@@ -41,8 +50,8 @@ export function addToDo() {
     info.getToDoInfo()[2],
     info.getToDoInfo()[3]
   );
-  activeProject.push(toDo.getToDo());
-  console.log(activeProject);
+  getActiveProject().push(toDo.getToDo());
+  console.log(projectList);
 }
 
 function toDoInfo() {
@@ -63,4 +72,4 @@ function toDoInfo() {
   return { getToDoInfo };
 }
 
-export { activeProject, projectList };
+export { projectList };
