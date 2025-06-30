@@ -8,27 +8,29 @@
   <body>
     <div id="content">
       <div class="sidebar"></div>
-      <div class="formDiv">
-        <form action="" method="post" id="toDoForm">
-          <label for="title">What would you like to do:</label>
-          <input name="user_title" type="text" id="title" required />
+      <div class="display">
+        <div class="formDiv" hidden>
+          <form action="" method="post" id="toDoForm">
+            <label for="title">What would you like to do:</label>
+            <input name="user_title" type="text" id="title" required />
 
-          <label for="desc">Add some more information:</label>
-          <textarea name="user_desc" id="desc"></textarea>
+            <label for="desc">Add some more information:</label>
+            <textarea name="user_desc" id="desc"></textarea>
 
-          <label for="dueDate">When is it due:</label>
-          <input type="date" id="dueDate" required />
+            <label for="dueDate">When is it due:</label>
+            <input type="date" id="dueDate" required />
 
-          <label for="priority">How important is the task:</label>
-          <select name="priority" id="priority" required>
-            <option value="high">Very Important</option>
-            <option value="medium">Medium</option>
-            <option value="low">Not Important</option>
-          </select>
+            <label for="priority">How important is the task:</label>
+            <select name="priority" id="priority" required>
+              <option value="high">Very Important</option>
+              <option value="medium">Medium</option>
+              <option value="low">Not Important</option>
+            </select>
 
-          <button type="button" id="add">Add</button>
-          <button type="button" id="cancel">Cancel</button>
-        </form>
+            <button type="button" id="add">Add</button>
+            <button type="button" id="cancel">Cancel</button>
+          </form>
+        </div>
       </div>
     </div>
   </body>

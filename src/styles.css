@@ -103,11 +103,12 @@ body {
   grid-template-columns: 300px 1fr;
 }
 
-.formDiv {
-  grid-column: 2;
-  justify-self: center;
-  align-self: center;
+.display {
+  display: grid;
+  justify-content: center;
+  align-content: center;
 }
+
 #toDoForm {
   display: flex;
   flex-direction: column;

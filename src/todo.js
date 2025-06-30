@@ -22,7 +22,7 @@ export function setActiveProject(title) {
   projectList.activeProject = title;
 }
 
-function getActiveProject() {
+export function getActiveProject() {
   let active = projectList.toDoContainer[projectList.activeProject];
 
   return active;
@@ -59,16 +59,21 @@ function toDoInfo() {
   const formDate = document.querySelector("#dueDate");
   const formPriority = document.querySelector("#priority");
 
-  const toDoInfo = [
-    formTitle.value,
-    formDesc.value,
-    formDate.value,
-    formPriority.value,
-  ];
+  // const toDoInfo = [
+  //   formTitle.value,
+  //   formDesc.value,
+  //   formDate.value,
+  //   formPriority.value,
+  // ];
+
+  const toDoInfo = ["title", "desc", "date", "priority"];
 
   const getToDoInfo = () => toDoInfo;
 
   return { getToDoInfo };
 }
+
+addToDo();
+addToDo();
 
 export { projectList };
