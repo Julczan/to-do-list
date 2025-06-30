@@ -97,7 +97,10 @@ body {
   padding-left: 30px;
   cursor: pointer;
 }
-
+.add-button {
+  width: 150px;
+  font-size: 1.5rem;
+}
 #content {
   display: grid;
   grid-template-columns: 300px 1fr;
@@ -110,7 +113,7 @@ body {
   gap: 10px;
 }
 
-#toDoForm {
+form {
   display: flex;
   flex-direction: column;
   width: 500px;
@@ -156,4 +159,20 @@ input[type="checkbox"] {
   height: 25px;
   width: 25px;
   background-color: #eee;
+}
+
+.priority {
+  width: 10%;
+  height: 100%;
+  left: 50px;
+  border-radius: 5px;
+  background-color: green;
+  position: absolute;
+}
+
+.delete-btn {
+  width: 50px;
+  background-color: var(--background-red);
+  border: none;
+  border-radius: 10px;
 }

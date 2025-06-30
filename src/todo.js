@@ -1,3 +1,5 @@
+import { displayToDo } from "./display";
+
 let projectList = {
   projects: [],
   activeProject: "",
@@ -50,7 +52,7 @@ export function addToDo() {
     info.getToDoInfo()[3]
   );
   getActiveProject().push(toDo.getToDo());
-  console.log(projectList);
+  displayToDo();
 }
 
 function toDoInfo() {
@@ -59,21 +61,16 @@ function toDoInfo() {
   const formDate = document.querySelector("#dueDate");
   const formPriority = document.querySelector("#priority");
 
-  // const toDoInfo = [
-  //   formTitle.value,
-  //   formDesc.value,
-  //   formDate.value,
-  //   formPriority.value,
-  // ];
-
-  const toDoInfo = ["title", "desc", "date", "priority"];
+  const toDoInfo = [
+    formTitle.value,
+    formDesc.value,
+    formDate.value,
+    formPriority.value,
+  ];
 
   const getToDoInfo = () => toDoInfo;
 
   return { getToDoInfo };
 }
-
-addToDo();
-addToDo();
 
 export { projectList };

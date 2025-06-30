@@ -7,12 +7,20 @@ export function createSidebar() {
   profile.classList.add("sidebar-element");
   profile.textContent = "Julczan";
 
+  const addButton = document.createElement("button");
+  addButton.classList.add("add-button");
+  addButton.textContent = "Add +";
+
   const projects = createProjectDivs(projectList.projects).projectDiv;
 
+  container.appendChild(addButton);
   container.appendChild(profile);
   container.appendChild(projects);
 
-  return { container, projects };
+  const getAddButton = () => addButton;
+  const getProjects = () => projects;
+
+  return { container, getProjects, getAddButton };
 }
 
 function createProjectDivs(projects) {
