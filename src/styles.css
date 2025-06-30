@@ -139,6 +139,21 @@ button[type="button"] {
 }
 
 .card {
-  border: 2px solid black;
-  width: 400px;
+  border-top: 2px solid var(--background-dark);
+  border-bottom: 2px solid var(--background-dark);
+  font-size: 1.5rem;
+  width: 70vw;
+  position: relative;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+input[type="checkbox"] {
+  left: 0px;
+  top: 5px;
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
 }

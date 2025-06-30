@@ -1,9 +1,7 @@
 import { addToDo, setActiveProject, projectList } from "./todo.js";
 import { createSidebar } from "./sidebar.js";
+import { displayToDo } from "./display.js";
 
-function message() {
-  console.log(`You are in ${projectList.activeProject} folder`);
-}
 const sidebarProject = createSidebar().projects.childNodes;
 
 for (let i = 0; i < sidebarProject.length; i++) {
@@ -12,7 +10,9 @@ for (let i = 0; i < sidebarProject.length; i++) {
   );
 }
 
-// sidebarProject.addEventListener("click", () => message());
+for (let i = 0; i < sidebarProject.length; i++) {
+  sidebarProject[i].addEventListener("click", () => displayToDo());
+}
 
 const addButton = document.querySelector("#add");
 
