@@ -1,8 +1,10 @@
-import { getActiveProject } from "./todo";
+import { getActiveProject, projectList } from "./todo";
 
 export function displayToDo() {
   let active = getActiveProject();
   const display = document.querySelector(".display");
+  const header = document.createElement("h1");
+  header.textContent = projectList.activeProject;
 
   display.textContent = "";
 
@@ -38,4 +40,5 @@ export function displayToDo() {
     toDoCard.appendChild(deleteBtn);
     display.appendChild(toDoCard);
   }
+  display.appendChild(header);
 }

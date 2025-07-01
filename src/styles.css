@@ -77,8 +77,9 @@ h6 {
 :root {
   --background-light: rgb(238, 238, 238);
   --background-dark: rgb(225, 225, 225);
-  --background-green: rgb(38, 230, 0);
-  --background-red: rgb(230, 0, 0);
+  --hover: rgb(180, 180, 180);
+  --background-green: rgba(38, 230, 0, 0.68);
+  --background-red: rgba(230, 0, 0, 0.611);
 }
 
 body {
@@ -97,6 +98,11 @@ body {
   padding-left: 30px;
   cursor: pointer;
 }
+
+.sidebar-element:hover {
+  background-color: var(--hover);
+}
+
 .add-button {
   width: 150px;
   font-size: 1.5rem;
@@ -117,12 +123,20 @@ form {
   display: flex;
   flex-direction: column;
   width: 500px;
+  gap: 10px;
 }
 
 select {
   padding: 16px 20px;
   border: none;
   border-radius: 4px;
+}
+
+input,
+textarea {
+  font-size: 1.5rem;
+  border-radius: 10px;
+  border: 2px solid var(--background-light);
 }
 
 button[type="button"] {
@@ -133,6 +147,7 @@ button[type="button"] {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 5px;
+  font-size: 1.5rem;
 }
 #add {
   background-color: var(--background-green);
@@ -175,4 +190,11 @@ input[type="checkbox"] {
   background-color: var(--background-red);
   border: none;
   border-radius: 10px;
+}
+
+dialog {
+  align-self: center;
+  justify-self: center;
+  border: none;
+  border-radius: 20px;
 }

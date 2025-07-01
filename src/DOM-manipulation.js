@@ -1,9 +1,11 @@
-import { addToDo, setActiveProject, projectList } from "./todo.js";
+import { addToDo, setActiveProject } from "./todo.js";
 import { createSidebar } from "./sidebar.js";
 import { displayToDo } from "./display.js";
 
 const sidebar = createSidebar();
 const dialog = document.querySelector("dialog");
+const addButton = document.querySelector("#add");
+const cancelButton = document.querySelector("#cancel");
 
 const sidebarProject = sidebar.getProjects().childNodes;
 
@@ -19,9 +21,13 @@ for (let i = 0; i < sidebarProject.length; i++) {
 
 const createButton = sidebar.getAddButton();
 
-const addButton = document.querySelector("#add");
+function addToDoCloseDialog() {
+  addToDo();
+  dialog.close();
+}
 
-addButton.addEventListener("click", () => addToDo());
+addButton.addEventListener("click", () => addToDoCloseDialog());
 createButton.addEventListener("click", () => dialog.showModal());
+cancelButton.addEventListener("click", () => dialog.close());
 
 export { addButton };
