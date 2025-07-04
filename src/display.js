@@ -3,7 +3,7 @@ import { getActiveProject, projectList } from "./todo";
 export function displayToDo() {
   let active = getActiveProject();
   const display = document.querySelector(".display");
-  const header = document.createElement("h1");
+  const header = document.querySelector(".header");
   header.textContent = projectList.activeProject;
 
   display.textContent = "";
@@ -25,6 +25,10 @@ export function displayToDo() {
     deleteBtn.classList.add("delete-btn");
     deleteBtn.textContent = "🗑️";
 
+    const editBtn = document.createElement("button");
+    editBtn.classList.add("edit-btn");
+    editBtn.textContent = "📄";
+
     const checkBoxDiv = document.createElement("input");
     checkBoxDiv.type = "checkbox";
 
@@ -38,7 +42,7 @@ export function displayToDo() {
     toDoCard.appendChild(dateDiv);
     toDoCard.appendChild(priorityDiv);
     toDoCard.appendChild(deleteBtn);
+    toDoCard.appendChild(editBtn);
     display.appendChild(toDoCard);
   }
-  display.appendChild(header);
 }

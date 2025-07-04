@@ -86,6 +86,13 @@ body {
   background-color: var(--background-light);
 }
 
+.header {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  align-self: center;
+}
+
 .sidebar {
   height: 100vh;
   background-color: var(--background-dark);
@@ -110,12 +117,14 @@ body {
 #content {
   display: grid;
   grid-template-columns: 300px 1fr;
+  grid-template-rows: 200px 1fr;
 }
 
 .display {
   display: grid;
   justify-content: center;
   align-content: center;
+  grid-column: 2;
   gap: 10px;
 }
 
@@ -185,10 +194,21 @@ input[type="checkbox"] {
   position: absolute;
 }
 
+.edit-btn {
+  position: absolute;
+  right: 80px;
+}
+
 .delete-btn {
-  width: 50px;
+  position: absolute;
+  right: 10px;
   background-color: var(--background-red);
-  border: none;
+}
+
+.delete-btn,
+.edit-btn {
+  height: 100%;
+  width: 50px;
   border-radius: 10px;
 }
 
