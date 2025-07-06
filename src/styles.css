@@ -184,14 +184,26 @@ input[type="checkbox"] {
   width: 25px;
   background-color: #eee;
 }
-
+.priority-high,
+.priority-medium,
+.priority-low,
 .priority {
   width: 10%;
   height: 100%;
   left: 50px;
   border-radius: 5px;
-  background-color: green;
   position: absolute;
+}
+.priority-low {
+  background-color: rgba(0, 128, 0, 0.224);
+}
+
+.priority-medium {
+  background-color: rgba(246, 255, 0, 0.557);
+}
+
+.priority-high {
+  background-color: rgba(255, 0, 0, 0.26);
 }
 
 .edit-btn {

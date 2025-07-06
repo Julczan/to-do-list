@@ -19,7 +19,6 @@ export function displayToDo() {
     dateDiv.classList.add("date");
 
     const priorityDiv = document.createElement("div");
-    priorityDiv.classList.add("priority");
 
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("delete-btn");
@@ -37,6 +36,8 @@ export function displayToDo() {
     priorityDiv.value = active[i].toDoPriority;
     checkBoxDiv.value = active[i].toDoCheck;
 
+    changePriorityColor(priorityDiv);
+
     toDoCard.appendChild(checkBoxDiv);
     toDoCard.appendChild(titleDiv);
     toDoCard.appendChild(dateDiv);
@@ -45,4 +46,19 @@ export function displayToDo() {
     toDoCard.appendChild(editBtn);
     display.appendChild(toDoCard);
   }
+}
+
+function changePriorityColor(priorityDiv) {
+  switch (priorityDiv.value) {
+    case "low":
+      priorityDiv.classList.add("priority-low");
+      break;
+    case "medium":
+      priorityDiv.classList.add("priority-medium");
+      break;
+    case "high":
+      priorityDiv.classList.add("priority-high");
+      break;
+  }
+  return priorityDiv;
 }
