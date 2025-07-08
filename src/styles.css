@@ -80,6 +80,7 @@ h6 {
   --hover: rgb(180, 180, 180);
   --background-green: rgba(38, 230, 0, 0.68);
   --background-red: rgba(230, 0, 0, 0.611);
+  --background-inactive: rgb(118, 118, 118);
 }
 
 body {
@@ -164,7 +165,7 @@ button[type="button"] {
 #cancel {
   background-color: var(--background-red);
 }
-
+.card-done,
 .card {
   border-top: 2px solid var(--background-dark);
   border-bottom: 2px solid var(--background-dark);
@@ -176,7 +177,13 @@ button[type="button"] {
   justify-content: center;
 }
 
-input[type="checkbox"] {
+.card-done {
+  background-color: var(--background-inactive);
+  color: black;
+  text-decoration: line-through;
+}
+
+.checkbox {
   left: 0px;
   top: 5px;
   position: absolute;

@@ -30,13 +30,20 @@ export function getActiveProject() {
   return active;
 }
 
-function createToDo(title, description, dueDate, priority, isDone = false) {
+export function createToDo(title, description, dueDate, priority) {
   const toDoTitle = title;
   const toDoDesc = description;
   const toDoDueDate = dueDate;
   const toDoPriority = priority;
-  const toDoCheck = isDone;
-  const toDo = { toDoTitle, toDoDesc, toDoDueDate, toDoPriority, toDoCheck };
+  const toDoCheck = false;
+
+  const toDo = {
+    toDoTitle,
+    toDoDesc,
+    toDoDueDate,
+    toDoPriority,
+    toDoCheck,
+  };
 
   const getToDo = () => toDo;
 
@@ -53,6 +60,7 @@ export function addToDo() {
   );
   getActiveProject().push(toDo.getToDo());
   displayToDo();
+  console.log(projectList.toDoContainer);
 }
 
 function toDoInfo() {

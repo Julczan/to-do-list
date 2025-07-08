@@ -10,7 +10,12 @@ export function displayToDo() {
 
   for (let i = 0; i < active.length; i++) {
     const toDoCard = document.createElement("div");
-    toDoCard.classList.add("card");
+
+    if (active[i].toDoCheck) {
+      toDoCard.classList.add("card-done");
+    } else {
+      toDoCard.classList.add("card");
+    }
 
     const titleDiv = document.createElement("div");
     titleDiv.classList.add("title");
@@ -28,13 +33,24 @@ export function displayToDo() {
     editBtn.classList.add("edit-btn");
     editBtn.textContent = "📄";
 
-    const checkBoxDiv = document.createElement("input");
-    checkBoxDiv.type = "checkbox";
+    const checkBoxDiv = document.createElement("button");
+    checkBoxDiv.classList.add("checkbox");
+
+    checkBoxDiv.addEventListener("click", () => {
+      if (active[i].toDoCheck) {
+        active[i].toDoCheck = false;
+        toDoCard.classList.remove("card-done");
+        toDoCard.classList.add("card");
+      } else {
+        active[i].toDoCheck = true;
+        toDoCard.classList.remove("card");
+        toDoCard.classList.add("card-done");
+      }
+    });
 
     dateDiv.textContent = active[i].toDoDueDate;
     titleDiv.textContent = active[i].toDoTitle;
     priorityDiv.value = active[i].toDoPriority;
-    checkBoxDiv.value = active[i].toDoCheck;
 
     changePriorityColor(priorityDiv);
 
