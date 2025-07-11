@@ -37,14 +37,13 @@ export function displayToDo() {
     checkBoxDiv.classList.add("checkbox");
 
     checkBoxDiv.addEventListener("click", () => {
+      active[i].toggleCheck();
       if (active[i].toDoCheck) {
-        active[i].toDoCheck = false;
-        toDoCard.classList.remove("card-done");
-        toDoCard.classList.add("card");
-      } else {
-        active[i].toDoCheck = true;
         toDoCard.classList.remove("card");
         toDoCard.classList.add("card-done");
+      } else {
+        toDoCard.classList.remove("card-done");
+        toDoCard.classList.add("card");
       }
     });
 

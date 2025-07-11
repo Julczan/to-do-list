@@ -30,35 +30,33 @@ export function getActiveProject() {
   return active;
 }
 
-export function createToDo(title, description, dueDate, priority) {
-  const toDoTitle = title;
-  const toDoDesc = description;
-  const toDoDueDate = dueDate;
-  const toDoPriority = priority;
-  const toDoCheck = false;
+class ToDo {
+  constructor(toDoTitle, toDoDesc, toDoDueDate, toDoPriority) {
+    this.toDoTitle = toDoTitle;
+    this.toDoDesc = toDoDesc;
+    this.toDoDueDate = toDoDueDate;
+    this.toDoPriority = toDoPriority;
+    this.toDoCheck = false;
+  }
 
-  const toDo = {
-    toDoTitle,
-    toDoDesc,
-    toDoDueDate,
-    toDoPriority,
-    toDoCheck,
-  };
-
-  const getToDo = () => toDo;
-
-  return { getToDo };
+  toggleCheck() {
+    if (this.toDoCheck) {
+      this.toDoCheck = false;
+    } else {
+      this.toDoCheck = true;
+    }
+  }
 }
 
 export function addToDo() {
   const info = toDoInfo();
-  const toDo = createToDo(
+  const toDo = new ToDo(
     info.getToDoInfo()[0],
     info.getToDoInfo()[1],
     info.getToDoInfo()[2],
     info.getToDoInfo()[3]
   );
-  getActiveProject().push(toDo.getToDo());
+  getActiveProject().push(toDo);
   displayToDo();
   console.log(projectList.toDoContainer);
 }
