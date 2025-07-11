@@ -9,7 +9,7 @@ export function createSidebar() {
 
   const addButton = document.createElement("button");
   addButton.classList.add("add-button");
-  addButton.textContent = "Add +";
+  addButton.textContent = "+";
 
   const projects = createProjectDivs(projectList.projects).projectDiv;
 
