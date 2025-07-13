@@ -26,6 +26,19 @@ export function displayToDo() {
     const dateDiv = document.createElement("div");
     dateDiv.classList.add("date");
 
+    const detailDiv = document.createElement("button");
+    detailDiv.classList.add("detail");
+    detailDiv.textContent = "Details";
+
+    detailDiv.addEventListener("click", () =>
+      displayDetails(
+        active[i].toDoTitle,
+        active[i].toDoDueDate,
+        active[i].toDoDesc,
+        active[i].toDoPriority
+      )
+    );
+
     const priorityDiv = document.createElement("div");
 
     const deleteBtn = document.createElement("button");
@@ -68,6 +81,7 @@ export function displayToDo() {
     toDoCard.appendChild(titleDiv);
     toDoCard.appendChild(dateDiv);
     toDoCard.appendChild(priorityDiv);
+    toDoCard.appendChild(detailDiv);
     toDoCard.appendChild(deleteBtn);
     toDoCard.appendChild(editBtn);
     display.appendChild(toDoCard);
@@ -87,4 +101,27 @@ function changePriorityColor(priorityDiv) {
       break;
   }
   return priorityDiv;
+}
+
+function displayDetails(title, dueDate, desc, priority) {
+  const display = document.querySelector(".display");
+  const dialog = document.createElement("dialog");
+  const titleDiv = document.createElement("div");
+  const dueDateDiv = document.createElement("div");
+  const descDiv = document.createElement("div");
+  const priorityDiv = document.createElement("div");
+
+  titleDiv.textContent = `Title: ${title}`;
+  dueDateDiv.textContent = `Time until: ${dueDate}`;
+  descDiv.textContent = `More details: ${desc}`;
+  priorityDiv.textContent = `Priority: ${priority}`;
+
+  dialog.appendChild(titleDiv);
+  dialog.appendChild(dueDateDiv);
+  dialog.appendChild(descDiv);
+  dialog.appendChild(priorityDiv);
+
+  display.appendChild(dialog);
+
+  dialog.showModal();
 }

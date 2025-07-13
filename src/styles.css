@@ -244,9 +244,19 @@ button[type="button"] {
   border-radius: 10px;
 }
 
+.detail {
+  height: 100%;
+  width: 100px;
+  background-color: var(--background-dark);
+  position: absolute;
+  right: 150px;
+  border-radius: 5px;
+}
+
 dialog {
   align-self: center;
   justify-self: center;
   border: none;
   border-radius: 20px;
+  font-size: 2rem;
 }
