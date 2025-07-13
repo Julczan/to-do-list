@@ -3,7 +3,7 @@ import { displayToDo } from "./display";
 let projectList = {
   projects: [],
   activeProject: "",
-  toDoContainer: {},
+  toDoContainer: [],
 };
 
 createProject("Home");
@@ -26,7 +26,6 @@ export function setActiveProject(title) {
 
 export function getActiveProject() {
   let active = projectList.toDoContainer[projectList.activeProject];
-
   return active;
 }
 

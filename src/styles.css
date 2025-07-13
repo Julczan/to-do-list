@@ -187,14 +187,23 @@ button[type="button"] {
   text-decoration: line-through;
 }
 
-.checkbox {
+.checkbox,
+.checkbox-active {
   left: 0px;
   top: 5px;
   position: absolute;
   height: 25px;
   width: 25px;
+  border-radius: 25px;
+}
+
+.checkbox {
   background-color: #eee;
 }
+.checkbox-active {
+  background-color: black;
+}
+
 .priority-high,
 .priority-medium,
 .priority-low,

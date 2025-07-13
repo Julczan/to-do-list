@@ -10,11 +10,14 @@ export function displayToDo() {
 
   for (let i = 0; i < active.length; i++) {
     const toDoCard = document.createElement("div");
+    const checkBoxDiv = document.createElement("button");
 
     if (active[i].toDoCheck) {
       toDoCard.classList.add("card-done");
+      checkBoxDiv.classList.add("checkbox-active");
     } else {
       toDoCard.classList.add("card");
+      checkBoxDiv.classList.add("checkbox");
     }
 
     const titleDiv = document.createElement("div");
@@ -29,21 +32,29 @@ export function displayToDo() {
     deleteBtn.classList.add("delete-btn");
     deleteBtn.textContent = "🗑️";
 
+    deleteBtn.addEventListener("click", () => {
+      let index = active.indexOf(active[i]);
+      active.splice(index, 1);
+      displayToDo();
+    });
+
     const editBtn = document.createElement("button");
     editBtn.classList.add("edit-btn");
     editBtn.textContent = "📄";
 
-    const checkBoxDiv = document.createElement("button");
-    checkBoxDiv.classList.add("checkbox");
-
     checkBoxDiv.addEventListener("click", () => {
       active[i].toggleCheck();
+
       if (active[i].toDoCheck) {
         toDoCard.classList.remove("card");
         toDoCard.classList.add("card-done");
+        checkBoxDiv.classList.remove("checkbox");
+        checkBoxDiv.classList.add("checkbox-active");
       } else {
         toDoCard.classList.remove("card-done");
         toDoCard.classList.add("card");
+        checkBoxDiv.classList.remove("checkbox-active");
+        checkBoxDiv.classList.add("checkbox");
       }
     });
 
