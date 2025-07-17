@@ -10,7 +10,7 @@ createProject("Home");
 createProject("Car");
 createProject("Gym");
 
-function createProject(title) {
+export function createProject(title) {
   const projectTitle = title;
 
   setActiveProject(projectTitle);
@@ -44,6 +44,14 @@ class ToDo {
     } else {
       this.toDoCheck = true;
     }
+  }
+
+  editToDo(title, desc, dueDate, priority) {
+    this.toDoTitle = toDoTitle;
+    this.toDoDesc = toDoDesc;
+    this.toDoDueDate = toDoDueDate;
+    this.toDoPriority = toDoPriority;
+    this.toDoCheck = false;
   }
 }
 
