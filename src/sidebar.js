@@ -1,30 +1,24 @@
 import { displayToDo } from "./display.js";
-import { projectList, createProject } from "./todo.js";
+import { projectList, createProject, setActiveProject } from "./todo.js";
 
 export function createSidebar() {
   const container = document.querySelector(".sidebar");
-  const dialog = document.querySelector("dialog");
 
   const profile = document.createElement("div");
   profile.classList.add("sidebar-element");
   profile.textContent = "Julczan";
 
-  const addButton = document.querySelector(".add-button");
-
   const addProjectBtn = document.createElement("button");
   addProjectBtn.classList.add("add-project-button");
   addProjectBtn.textContent = "Add Project";
-
-  addProjectBtn.addEventListener("click", () => addProject());
-  addButton.addEventListener("click", () => dialog.showModal());
 
   container.appendChild(profile);
   container.appendChild(addProjectBtn);
   displayProjects();
 
-  const getAddButton = () => addButton;
+  const getAddProjectButton = () => addProjectBtn;
 
-  return { getAddButton };
+  return { getAddProjectButton };
 }
 
 function displayProjects() {
@@ -35,11 +29,16 @@ function displayProjects() {
     const projectDiv = document.createElement("div");
     projectDiv.classList.add("sidebar-element");
     projectDiv.textContent = projectList.projects[i];
+
+    projectDiv.addEventListener("click", (e) => {
+      setActiveProject(e.target.textContent);
+      displayToDo();
+    });
     projectContainer.appendChild(projectDiv);
   }
 }
 
-function addProject() {
+export function addProject() {
   const display = document.querySelector(".display");
   const dialog = document.createElement("dialog");
   const input = document.createElement("input");
