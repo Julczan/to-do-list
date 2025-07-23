@@ -46,7 +46,7 @@ class ToDo {
     }
   }
 
-  editToDo(title, desc, dueDate, priority) {
+  editToDo(toDoTitle, toDoDesc, toDoDueDate, toDoPriority) {
     this.toDoTitle = toDoTitle;
     this.toDoDesc = toDoDesc;
     this.toDoDueDate = toDoDueDate;

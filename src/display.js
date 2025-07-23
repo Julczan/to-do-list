@@ -2,8 +2,10 @@ import { getActiveProject, projectList } from "./todo";
 
 export function displayToDo() {
   let active = getActiveProject();
+  const editDialog = document.querySelector("#editDialog");
   const display = document.querySelector(".display");
   const header = document.querySelector(".header");
+  const saveBtn = document.querySelector("#save");
   header.textContent = projectList.activeProject;
 
   display.textContent = "";
@@ -54,6 +56,24 @@ export function displayToDo() {
     const editBtn = document.createElement("button");
     editBtn.classList.add("edit-btn");
     editBtn.textContent = "📄";
+
+    editBtn.addEventListener("click", () => {
+      editDialog.showModal();
+    });
+
+    saveBtn.addEventListener("click", () => {
+      const edited = edit();
+      console.log(edited.getEditInfo());
+
+      active[i].editToDo(
+        edited.getEditInfo()[0],
+        edited.getEditInfo()[1],
+        edited.getEditInfo()[2],
+        edited.getEditInfo()[3]
+      );
+      displayToDo();
+      editDialog.close();
+    });
 
     checkBoxDiv.addEventListener("click", () => {
       active[i].toggleCheck();
@@ -124,4 +144,22 @@ function displayDetails(title, dueDate, desc, priority) {
   display.appendChild(dialog);
 
   dialog.showModal();
+}
+
+function edit() {
+  const editFormTitle = document.querySelector("#editTitle");
+  const editFormDesc = document.querySelector("#editDesc");
+  const editFormDate = document.querySelector("#editDueDate");
+  const editFormPriority = document.querySelector("#editPriority");
+
+  const editToDoInfo = [
+    editFormTitle.value,
+    editFormDesc.value,
+    editFormDate.value,
+    editFormPriority.value,
+  ];
+
+  const getEditInfo = () => editToDoInfo;
+
+  return { getEditInfo };
 }
