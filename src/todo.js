@@ -65,7 +65,6 @@ export function addToDo() {
   );
   getActiveProject().push(toDo);
   displayToDo();
-  console.log(projectList.toDoContainer);
 }
 
 function toDoInfo() {

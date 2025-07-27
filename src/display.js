@@ -2,10 +2,9 @@ import { getActiveProject, projectList } from "./todo";
 
 export function displayToDo() {
   let active = getActiveProject();
-  const editDialog = document.querySelector("#editDialog");
   const display = document.querySelector(".display");
   const header = document.querySelector(".header");
-  const saveBtn = document.querySelector("#save");
+
   header.textContent = projectList.activeProject;
 
   display.textContent = "";
@@ -58,21 +57,7 @@ export function displayToDo() {
     editBtn.textContent = "📄";
 
     editBtn.addEventListener("click", () => {
-      editDialog.showModal();
-    });
-
-    saveBtn.addEventListener("click", () => {
-      const edited = edit();
-      console.log(edited.getEditInfo());
-
-      active[i].editToDo(
-        edited.getEditInfo()[0],
-        edited.getEditInfo()[1],
-        edited.getEditInfo()[2],
-        edited.getEditInfo()[3]
-      );
-      displayToDo();
-      editDialog.close();
+      edit(active[i]);
     });
 
     checkBoxDiv.addEventListener("click", () => {
@@ -146,20 +131,22 @@ function displayDetails(title, dueDate, desc, priority) {
   dialog.showModal();
 }
 
-function edit() {
-  const editFormTitle = document.querySelector("#editTitle");
-  const editFormDesc = document.querySelector("#editDesc");
-  const editFormDate = document.querySelector("#editDueDate");
-  const editFormPriority = document.querySelector("#editPriority");
+function edit(active) {
+  const display = document.querySelector(".display");
+  const editDialog = document.createElement("dialog");
+  const text = document.createElement("input");
+  const saveBtn = document.createElement("button");
+  saveBtn.textContent = "Save";
 
-  const editToDoInfo = [
-    editFormTitle.value,
-    editFormDesc.value,
-    editFormDate.value,
-    editFormPriority.value,
-  ];
+  editDialog.appendChild(text);
+  editDialog.appendChild(saveBtn);
 
-  const getEditInfo = () => editToDoInfo;
+  saveBtn.addEventListener("click", () => {
+    active.editToDo(text.value, "cos", "cos", "low");
+    displayToDo();
+  });
 
-  return { getEditInfo };
+  display.appendChild(editDialog);
+
+  editDialog.showModal();
 }

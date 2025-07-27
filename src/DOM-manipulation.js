@@ -9,7 +9,6 @@ const form = document.querySelector("form");
 const addButton = document.querySelector("#add");
 const cancelButton = document.querySelector("#cancel");
 const createButton = document.querySelector(".add-button");
-const editCancelBtn = document.querySelector("#editCancel");
 
 const addProjectButton = sidebar.getAddProjectButton();
 
@@ -27,7 +26,6 @@ addButton.addEventListener("click", (e) => {
 });
 createButton.addEventListener("click", () => dialog.showModal());
 cancelButton.addEventListener("click", () => dialog.close());
-editCancelBtn.addEventListener("click", () => editDialog.close());
 addProjectButton.addEventListener("click", () => addProject());
 
 export { addButton };
