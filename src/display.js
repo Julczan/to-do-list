@@ -133,16 +133,65 @@ function displayDetails(title, dueDate, desc, priority) {
 
 function edit(active) {
   const display = document.querySelector(".display");
+  const editForm = document.createElement("form");
   const editDialog = document.createElement("dialog");
-  const text = document.createElement("input");
+  const editTitle = document.createElement("input");
+  const editDueDate = document.createElement("input");
+  const editPriority = document.createElement("select");
+  const lowPriority = document.createElement("option");
+  const mediumPriority = document.createElement("option");
+  const highPriority = document.createElement("option");
+  const editDesc = document.createElement("textarea");
   const saveBtn = document.createElement("button");
+
+  editForm.method = "post";
+
+  editTitle.id = "editTitle";
+  editTitle.placeholder = "Title";
+  editTitle.value = active.toDoTitle;
+
+  editDueDate.id = "editDate";
+  editDueDate.value = active.toDoDueDate;
+
+  editPriority.id = "editPriority";
+  editPriority.value = active.toDoPriority;
+  lowPriority.textContent = "Not Important";
+  mediumPriority.textContent = "Medium";
+  highPriority.textContent = "Very Important";
+  lowPriority.value = "low";
+  mediumPriority.value = "medium";
+  highPriority.value = "high";
+
+  editPriority.appendChild(lowPriority);
+  editPriority.appendChild(mediumPriority);
+  editPriority.appendChild(highPriority);
+
+  editDesc.id = "editDesc";
+  editDesc.value = active.toDoDesc;
+
   saveBtn.textContent = "Save";
+  saveBtn.type = "submit";
 
-  editDialog.appendChild(text);
-  editDialog.appendChild(saveBtn);
+  editDueDate.type = "date";
 
-  saveBtn.addEventListener("click", () => {
-    active.editToDo(text.value, "cos", "cos", "low");
+  editForm.appendChild(editTitle);
+  editForm.appendChild(editDesc);
+  editForm.appendChild(editDueDate);
+  editForm.appendChild(editPriority);
+  editForm.appendChild(saveBtn);
+
+  editDialog.appendChild(editForm);
+
+  saveBtn.addEventListener("click", (e) => {
+    if (editForm.checkValidity()) {
+      e.preventDefault();
+      active.editToDo(
+        editTitle.value,
+        editDesc.value,
+        editDueDate.value,
+        editPriority.value
+      );
+    }
     displayToDo();
   });
 
