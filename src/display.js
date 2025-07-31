@@ -1,7 +1,8 @@
-import { getActiveProject, projectList } from "./todo";
+import { getActiveProject, projectList, updateLocalStorage } from "./todo";
 
 export function displayToDo() {
   let active = getActiveProject();
+
   const display = document.querySelector(".display");
   const header = document.querySelector(".header");
 
@@ -49,6 +50,7 @@ export function displayToDo() {
     deleteBtn.addEventListener("click", () => {
       let index = active.indexOf(active[i]);
       active.splice(index, 1);
+      updateLocalStorage();
       displayToDo();
     });
 
@@ -61,18 +63,20 @@ export function displayToDo() {
     });
 
     checkBoxDiv.addEventListener("click", () => {
-      active[i].toggleCheck();
-
       if (active[i].toDoCheck) {
-        toDoCard.classList.remove("card");
-        toDoCard.classList.add("card-done");
-        checkBoxDiv.classList.remove("checkbox");
-        checkBoxDiv.classList.add("checkbox-active");
-      } else {
+        active[i].toDoCheck = false;
         toDoCard.classList.remove("card-done");
         toDoCard.classList.add("card");
         checkBoxDiv.classList.remove("checkbox-active");
         checkBoxDiv.classList.add("checkbox");
+        updateLocalStorage();
+      } else {
+        active[i].toDoCheck = true;
+        toDoCard.classList.remove("card");
+        toDoCard.classList.add("card-done");
+        checkBoxDiv.classList.remove("checkbox");
+        checkBoxDiv.classList.add("checkbox-active");
+        updateLocalStorage();
       }
     });
 
@@ -187,13 +191,13 @@ function edit(active) {
   saveBtn.addEventListener("click", (e) => {
     if (editForm.checkValidity()) {
       e.preventDefault();
-      active.editToDo(
-        editTitle.value,
-        editDesc.value,
-        editDueDate.value,
-        editPriority.value
-      );
+      (active.toDoTitle = editTitle.value),
+        (active.toDoDesc = editDesc.value),
+        (active.toDoDueDate = editDueDate.value),
+        (active.toDoPriority = editPriority.value);
+      active.toDoCheck = false;
     }
+    updateLocalStorage();
     displayToDo();
   });
 

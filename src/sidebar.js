@@ -1,5 +1,10 @@
 import { displayToDo } from "./display.js";
-import { projectList, createProject, setActiveProject } from "./todo.js";
+import {
+  projectList,
+  createProject,
+  setActiveProject,
+  updateLocalStorage,
+} from "./todo.js";
 
 export function createSidebar() {
   const container = document.querySelector(".sidebar");
@@ -32,6 +37,7 @@ function displayProjects() {
 
     projectDiv.addEventListener("click", (e) => {
       setActiveProject(e.target.textContent);
+      updateLocalStorage();
       displayToDo();
     });
     projectContainer.appendChild(projectDiv);
@@ -46,6 +52,7 @@ export function addProject() {
   button.classList.add("add-button");
   button.textContent = "+";
   input.type = "text";
+  input.id = "project-name";
   input.placeholder = "Project title";
 
   dialog.appendChild(input);
@@ -60,6 +67,7 @@ export function addProject() {
       displayProjects();
       displayToDo();
       dialog.close();
+      updateLocalStorage();
     } else {
       alert("Project name can't be empty");
     }

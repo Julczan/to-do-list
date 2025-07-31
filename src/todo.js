@@ -1,12 +1,22 @@
 import { displayToDo } from "./display";
 
+const storedData = JSON.parse(localStorage.getItem("todos"));
+
 let projectList = {
   projects: [],
-  activeProject: "",
+  activeProject: "Home",
   toDoContainer: {},
 };
 
 createProject("Home");
+
+if (storedData !== null) {
+  projectList = storedData;
+}
+
+export function updateLocalStorage() {
+  localStorage.setItem("todos", JSON.stringify(projectList));
+}
 
 export function createProject(title) {
   const projectTitle = title;
@@ -37,14 +47,6 @@ class ToDo {
     this.toDoCheck = false;
   }
 
-  toggleCheck() {
-    if (this.toDoCheck) {
-      this.toDoCheck = false;
-    } else {
-      this.toDoCheck = true;
-    }
-  }
-
   editToDo(toDoTitle, toDoDesc, toDoDueDate, toDoPriority) {
     this.toDoTitle = toDoTitle;
     this.toDoDesc = toDoDesc;
@@ -63,8 +65,9 @@ export function addToDo() {
     info.getToDoInfo()[3]
   );
   getActiveProject().push(toDo);
-  console.log(projectList);
-  localStorage.setItem("todos", JSON.stringify(projectList));
+  updateLocalStorage();
+  const storedData = JSON.parse(localStorage.getItem("todos"));
+  console.log(storedData);
   displayToDo();
 }
 
