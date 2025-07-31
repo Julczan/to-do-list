@@ -145,9 +145,11 @@ function edit(active) {
   const saveBtn = document.createElement("button");
 
   editForm.method = "post";
+  editForm.id = "editForm";
 
   editTitle.id = "editTitle";
   editTitle.placeholder = "Title";
+  editTitle.required = true;
   editTitle.value = active.toDoTitle;
 
   editDueDate.id = "editDate";
@@ -196,6 +198,8 @@ function edit(active) {
   });
 
   display.appendChild(editDialog);
+
+  document.body.appendChild(editDialog);
 
   editDialog.showModal();
 }

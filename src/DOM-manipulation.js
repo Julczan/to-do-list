@@ -1,4 +1,4 @@
-import { addToDo, setActiveProject } from "./todo.js";
+import { addToDo, projectList, setActiveProject } from "./todo.js";
 import { addProject, createSidebar } from "./sidebar.js";
 import { displayToDo } from "./display.js";
 

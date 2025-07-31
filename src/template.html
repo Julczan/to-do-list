@@ -39,37 +39,6 @@
           <button type="button" id="cancel">Cancel</button>
         </form>
       </dialog>
-      <dialog closedby="any" id="editDialog">
-        <form action="" method="post" id="editForm">
-          <input
-            name="user_title"
-            type="text"
-            id="editTitle"
-            required
-            placeholder="Title"
-          />
-          <textarea
-            name="user_desc"
-            id="editDesc"
-            placeholder="Details:"
-          ></textarea>
-          <label for="editDueDate">Due Date:</label>
-          <input type="date" id="editDueDate" name="user_duedate" required />
-          <label for="editPriority">Priority:</label>
-          <select
-            name="priority"
-            id="editPriority"
-            name="user_priority"
-            required
-          >
-            <option value="high">Very Important</option>
-            <option value="medium">Medium</option>
-            <option value="low">Not Important</option>
-          </select>
-          <button type="button" id="editSave">Save</button>
-          <button type="button" id="editCancel">Cancel</button>
-        </form>
-      </dialog>
     </div>
   </body>
 </html>

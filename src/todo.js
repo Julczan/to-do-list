@@ -3,12 +3,10 @@ import { displayToDo } from "./display";
 let projectList = {
   projects: [],
   activeProject: "",
-  toDoContainer: [],
+  toDoContainer: {},
 };
 
 createProject("Home");
-createProject("Car");
-createProject("Gym");
 
 export function createProject(title) {
   const projectTitle = title;
@@ -26,6 +24,7 @@ export function setActiveProject(title) {
 
 export function getActiveProject() {
   let active = projectList.toDoContainer[projectList.activeProject];
+
   return active;
 }
 
@@ -64,6 +63,8 @@ export function addToDo() {
     info.getToDoInfo()[3]
   );
   getActiveProject().push(toDo);
+  console.log(projectList);
+  localStorage.setItem("todos", JSON.stringify(projectList));
   displayToDo();
 }
 
