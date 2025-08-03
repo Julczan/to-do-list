@@ -15,17 +15,10 @@ export function displayToDo() {
     const delProject = document.createElement("button");
     delProject.classList.add("del-project");
     display.appendChild(delProject);
-    delProject.addEventListener("click", () => {
-      let index = projectList.projects.indexOf(projectList.activeProject);
-      projectList.projects.splice(index, 1);
-      let projectName = projectList.activeProject;
+    delProject.textContent = "Delete Project";
 
-      delete projectList.toDoContainer[projectName];
-      projectList.activeProject = "Home";
-      displayProjects();
-      updateLocalStorage();
-      displayToDo();
-      console.log(projectList);
+    delProject.addEventListener("click", () => {
+      deleteProject();
     });
   }
 
@@ -207,6 +200,12 @@ function edit(active) {
 
   editDialog.appendChild(editForm);
 
+  display.appendChild(editDialog);
+
+  document.body.appendChild(editDialog);
+
+  editDialog.showModal();
+
   saveBtn.addEventListener("click", (e) => {
     if (editForm.checkValidity()) {
       e.preventDefault();
@@ -218,11 +217,18 @@ function edit(active) {
     }
     updateLocalStorage();
     displayToDo();
+    editDialog.close();
   });
+}
 
-  display.appendChild(editDialog);
+function deleteProject() {
+  let index = projectList.projects.indexOf(projectList.activeProject);
+  projectList.projects.splice(index, 1);
+  let projectName = projectList.activeProject;
 
-  document.body.appendChild(editDialog);
-
-  editDialog.showModal();
+  delete projectList.toDoContainer[projectName];
+  projectList.activeProject = "Home";
+  displayProjects();
+  updateLocalStorage();
+  displayToDo();
 }

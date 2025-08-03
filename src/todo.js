@@ -65,8 +65,6 @@ export function addToDo() {
   );
   getActiveProject().push(toDo);
   updateLocalStorage();
-  const storedData = JSON.parse(localStorage.getItem("todos"));
-  console.log(storedData);
   displayToDo();
 }
 

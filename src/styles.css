@@ -275,6 +275,7 @@ dialog {
 }
 
 .del-project {
-  background-color: red;
-  height: 20px;
+  background-color: var(--background-dark);
+  height: 50px;
+  width: 150px;
 }
