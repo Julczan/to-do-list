@@ -31,7 +31,6 @@ export function createProject(title) {
 export function setActiveProject(title) {
   projectList.activeProject = title;
 }
-
 export function getActiveProject() {
   let active = projectList.toDoContainer[projectList.activeProject];
 

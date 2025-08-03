@@ -26,7 +26,7 @@ export function createSidebar() {
   return { getAddProjectButton };
 }
 
-function displayProjects() {
+export function displayProjects() {
   const projectContainer = document.querySelector(".project-container");
   projectContainer.textContent = "";
 

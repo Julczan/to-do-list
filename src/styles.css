@@ -105,6 +105,7 @@ body {
   font-size: 1.5rem;
   padding-left: 30px;
   cursor: pointer;
+  position: relative;
 }
 
 .sidebar-element:hover {
@@ -271,4 +272,9 @@ dialog {
   border: none;
   border-radius: 20px;
   font-size: 2rem;
+}
+
+.del-project {
+  background-color: red;
+  height: 20px;
 }

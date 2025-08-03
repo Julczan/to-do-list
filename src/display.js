@@ -1,3 +1,4 @@
+import { displayProjects } from "./sidebar";
 import { getActiveProject, projectList, updateLocalStorage } from "./todo";
 
 export function displayToDo() {
@@ -9,6 +10,24 @@ export function displayToDo() {
   header.textContent = projectList.activeProject;
 
   display.textContent = "";
+
+  if (active.length === 0 && projectList.activeProject !== "Home") {
+    const delProject = document.createElement("button");
+    delProject.classList.add("del-project");
+    display.appendChild(delProject);
+    delProject.addEventListener("click", () => {
+      let index = projectList.projects.indexOf(projectList.activeProject);
+      projectList.projects.splice(index, 1);
+      let projectName = projectList.activeProject;
+
+      delete projectList.toDoContainer[projectName];
+      projectList.activeProject = "Home";
+      displayProjects();
+      updateLocalStorage();
+      displayToDo();
+      console.log(projectList);
+    });
+  }
 
   for (let i = 0; i < active.length; i++) {
     const toDoCard = document.createElement("div");
